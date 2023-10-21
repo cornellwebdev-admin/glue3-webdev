@@ -54,7 +54,11 @@
 
 <section
 	class="relative mx-auto mb-20 max-w-7xl px-4 pt-32 focus:outline-none sm:px-3 md:px-5 md:pt-48">
-	<Saos animation={'fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both'} once={true}>
+	<Saos
+		animation={'fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both'}
+		once={true}
+		top={150}
+		bottom={150}>
 		<h2 class="mt-4 text-center text-4xl font-extrabold tracking-tight sm:text-5xl">{heading}</h2>
 		<div
 			class="mt-12 grid grid-cols-1 gap-6 overflow-hidden sm:grid-cols-2 md:mt-20 lg:grid-cols-3 lg:gap-8 {!isShowMore &&

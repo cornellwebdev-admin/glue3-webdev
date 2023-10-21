@@ -82,9 +82,15 @@
 
 	<SectionBoldStatement
 		overline="Our philosophy"
-		heading="Build fast, fail forward"
 		desc="We don't believe in working on a project for 3 years and trying to deploy the perfect product."
-		desc2="We want to deploy an MVP in 1-2 months, see how the market reacts, and iterate based on user analytics and feedback." />
+		desc2="We want to deploy an MVP in 1-2 months, see how the market reacts, and iterate based on user analytics and feedback."
+		animationString="fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both">
+		<h2
+			slot="header"
+			class="mt-4 max-w-3xl text-4xl font-extrabold !leading-snug tracking-tight sm:text-5xl">
+			Build fast, fail forward
+		</h2>
+	</SectionBoldStatement>
 	<SectionInfo
 		overline="Step 1 - Team Matching"
 		heading="Attend our team matching socials"
@@ -98,9 +104,14 @@
 		photoPath={applyCohortSrc} />
 	<SectionBoldStatement
 		overline="Our belief"
-		heading="We strive to be an inclusive team for everyone at Cornell"
 		desc="We have a firm belief that if you're smart enough to get into Cornell, you're smart enough to build web apps. We don't require a resume or prior experience to join."
-		desc2="We aim to accept at least 80% of the team applications we receive." />
+		desc2="We aim to accept at least 80% of the team applications we receive.">
+		<h2
+			slot="header"
+			class="mt-4 max-w-3xl text-4xl font-extrabold !leading-snug tracking-tight sm:text-5xl">
+			We strive to be an inclusive team for everyone at Cornell
+		</h2>
+	</SectionBoldStatement>
 	<SectionInfo
 		overline="Step 3 - Build"
 		heading="Build a web application with your team"
@@ -114,10 +125,15 @@
 		photoPath={growthSrc} />
 	<SectionBoldStatement
 		overline="Join us"
-		heading="Ready to join our driven team of engineers and designers?"
 		desc="Cornell webdev is a software engineering team at Cornell that aims to build performant web applications."
-		linkLabel="Join us">
-		<button class="btn-primary btn mt-10 gap-1" on:click={() => (showModal = true)}>
+		linkLabel="Join us"
+		animationString="fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both">
+		<h2
+			slot="header"
+			class="mt-4 max-w-3xl text-4xl font-extrabold !leading-snug tracking-tight sm:text-5xl">
+			Ready to join our driven team of engineers and designers?
+		</h2>
+		<button slot="button" class="btn-primary btn mt-10 gap-1" on:click={() => (showModal = true)}>
 			Join Us
 			<span class="text-xl"><IconRightArrowLong /></span>
 		</button>

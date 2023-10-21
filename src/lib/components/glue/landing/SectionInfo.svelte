@@ -17,7 +17,10 @@
 	class="pt-18 mx-auto max-w-6xl items-center justify-center px-8 md:flex md:pt-36 {isReversed &&
 		'flex-row-reverse'}">
 	<div class="md:w-1/2 {isReversed ? 'md:pl-20' : 'md:pr-20'}">
-		<Saos animation={'fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both'} once={true}>
+		<Saos
+			animation={'fade-in 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both'}
+			once={true}
+			top={150}>
 			<h2 class="text-primary mt-8 font-semibold">{overline}</h2>
 			<h2 class="mt-4 text-3xl font-extrabold  tracking-tight sm:text-4xl sm:leading-snug">
 				{heading}

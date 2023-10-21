@@ -35,7 +35,8 @@ module.exports = {
 					'base-content': '#FCFCFC',
 					primary: colors.rose[500],
 					secondary: '#FCFCFC',
-					'secondary-content': colors.slate[800]
+					'secondary-content': colors.slate[800],
+					accent: '#6399BB'
 				}
 			}
 		]

@@ -8,6 +8,10 @@ export const PUBLIC_NAVS: IPublicNav[] = [
 		label: 'Team'
 	},
 	{
+		path: '/resources',
+		label: 'Resources'
+  },
+  {
 		path: '/project',
 		label: 'Projects'
 	}

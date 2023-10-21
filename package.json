@@ -55,6 +55,7 @@
 		"meilisearch": "^0.30.0",
 		"saos": "^1.3.1",
 		"showdown": "^2.1.0",
+		"svelte-material-icons": "^3.0.5",
 		"universal-cookie": "^4.0.4"
 	}
 }
