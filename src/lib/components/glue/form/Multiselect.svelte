@@ -65,7 +65,7 @@
 				class=" flex w-fit items-center justify-center rounded-md bg-zinc-200 px-2 text-sm font-medium text-base-content dark:bg-zinc-500">
 				{options.label}
 				<button
-					class={`ml-1  ${options.canRemove && 'hidden'}`}
+					class={`ml-1  ${options.canRemove ? 'flex' : 'hidden'}`}
 					on:click={() => removeOption(options.value)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

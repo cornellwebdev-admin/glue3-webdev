@@ -11,9 +11,12 @@
 	export let showError: boolean = false;
 	export let errorLabel: string = '';
 
+	export let initialValue: string = '';
+
 	// change input
 	function handleChange(e: Event) {
 		const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+		initialValue = target.value;
 		dispatch('input', target.value);
 		if (required && !target.value) {
 			showError = true;
@@ -29,20 +32,20 @@
 		<span class="label-text text-sm text-primary">{errorLabel}</span>
 	</label>
 
-	<!-- text area -->
 	{#if type === 'textarea'}
 		<textarea
-			class={`textarea-bordered textarea h-24 ${showError && 'textarea-error'} leading-normal`}
+			class={`textarea textarea-bordered h-24 ${showError && 'textarea-error'} leading-normal`}
 			{placeholder}
 			name={inputName}
-			on:input={handleChange} />
-		<!-- text input -->
+			on:input={handleChange}
+			bind:value={initialValue} />
 	{:else if type === 'text'}
 		<input
 			type="text"
 			{placeholder}
 			class={`input input-bordered input-md w-full max-w-full ${showError && 'input-error'}`}
 			name={inputName}
-			on:input={handleChange} />
+			on:input={handleChange}
+			bind:value={initialValue} />
 	{/if}
 </div>
