@@ -2,47 +2,27 @@
 	import { afterNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import PageContainer from '$lib/components/glue/PageContainer.svelte';
-	import TextInput from '$lib/components/glue/TextInput.svelte';
 	import { APP_NAME } from '$lib/glue/config';
-
 	import IconGoogle from '$lib/icons/glue/IconGoogle.svelte';
 
-	let email: string = '';
-	let isMagicLinkSent: boolean = false;
-	let isMagicLinkLoading: boolean = false;
-	let magicLinkError: string = '';
+	let isActiveMemberConsent = false;
+	let isAllowDeleteConsent = false;
+	let error = '';
 
 	const signInWithGoogle = async () => {
-		const redirectTo = `${$page.url.origin}/redirect?${$page.url.searchParams.toString()}`;
-
-		await $page?.data?.supabase.auth.signInWithOAuth({
-			provider: 'google',
-			options: {
-				redirectTo
-			}
-		});
-	};
-
-	const signInEmailMagicLink = async () => {
-		isMagicLinkLoading = true;
-
-		const emailRedirectTo = `${$page.url.origin}/redirect?${$page.url.searchParams.toString()}`;
-
-		const { error } = await $page?.data?.supabase.auth.signInWithOtp({
-			email,
-			options: {
-				emailRedirectTo
-			}
-		});
-
-		if (error) {
-			magicLinkError = error.message;
+		if (!isActiveMemberConsent || !isAllowDeleteConsent) {
+			error = 'Please check both consent checkboxes above';
 		} else {
-			isMagicLinkSent = true;
-			magicLinkError = '';
-		}
+			error = '';
+			const redirectTo = `${$page.url.origin}/redirect?${$page.url.searchParams.toString()}`;
 
-		isMagicLinkLoading = false;
+			await $page?.data?.supabase.auth.signInWithOAuth({
+				provider: 'google',
+				options: {
+					redirectTo
+				}
+			});
+		}
 	};
 
 	afterNavigate(({ from }) => {
@@ -60,8 +40,24 @@
 			<h1 class="text-3xl font-bold">Welcome back</h1>
 			<p class="mt-2 text-sm text-base-content/70">Sign in to get started with {APP_NAME}</p>
 
+			<div class="form-control mt-6">
+				<label class="label cursor-pointer items-start justify-start">
+					<input type="checkbox" bind:checked={isActiveMemberConsent} class="checkbox" />
+					<span class="label-text ml-4 text-left">I am or was an active member of webdev</span>
+				</label>
+			</div>
+
+			<div class="form-control mt-1">
+				<label class="label cursor-pointer items-start justify-start">
+					<input type="checkbox" bind:checked={isAllowDeleteConsent} class="checkbox" />
+					<span class="label-text ml-4 text-left">
+						I understand that my account can be deleted if I was never an active member of webdev
+					</span>
+				</label>
+			</div>
+
 			<!-- oauth -->
-			<div class="mt-12 space-y-4">
+			<div class="mt-6 space-y-4">
 				<button
 					type="button"
 					class="btn-outline btn-block btn mt-2 gap-2"
@@ -70,39 +66,7 @@
 				</button>
 			</div>
 
-			<div class="divider mt-10 mb-4">OR</div>
-
-			<!-- magic link -->
-			<form on:submit|preventDefault={signInEmailMagicLink}>
-				{#if isMagicLinkSent}
-					<div class="mt-6 rounded-xl bg-success/5 p-4">
-						<p class="text-center text-sm text-success">
-							A sign in link has been sent to your email!
-						</p>
-					</div>
-					<button
-						class="btn-ghost btn-xs btn mt-4"
-						on:click={() => {
-							isMagicLinkSent = false;
-							email = '';
-						}}>
-						Use a different email
-					</button>
-				{:else}
-					<TextInput bind:value={email} name="email" label="Email" type="email" />
-					<button
-						class="btn-primary btn-block btn mt-4"
-						disabled={!Boolean(email) || isMagicLinkLoading}>
-						{#if isMagicLinkLoading}
-							<span class="loading loading-spinner" />
-						{/if}
-						Sign in with email
-					</button>
-					{#if magicLinkError}
-						<p class="mt-2 text-xs text-error">{magicLinkError}</p>
-					{/if}
-				{/if}
-			</form>
+			<p class="mt-4 text-center text-xs text-error">{error}</p>
 
 			<!-- terms -->
 			<p class="mt-12 text-xs !leading-normal text-base-content/70">
