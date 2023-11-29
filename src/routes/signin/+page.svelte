@@ -41,9 +41,9 @@
 			<p class="mt-2 text-sm text-base-content/70">Sign in to get started with {APP_NAME}</p>
 
 			<div class="form-control mt-6">
-				<label class="label cursor-pointer justify-start">
+				<label class="label cursor-pointer items-start justify-start">
 					<input type="checkbox" bind:checked={isActiveMemberConsent} class="checkbox" />
-					<span class="label-text ml-4">I am or was an active member of webdev</span>
+					<span class="label-text ml-4 text-left">I am or was an active member of webdev</span>
 				</label>
 			</div>
 
