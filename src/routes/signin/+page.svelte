@@ -42,14 +42,14 @@
 
 			<div class="form-control mt-6">
 				<label class="label cursor-pointer justify-start">
-					<input type="checkbox" checked={isActiveMemberConsent} class="checkbox" />
+					<input type="checkbox" bind:checked={isActiveMemberConsent} class="checkbox" />
 					<span class="label-text ml-4">I am or was an active member of webdev</span>
 				</label>
 			</div>
 
 			<div class="form-control mt-1">
 				<label class="label cursor-pointer items-start justify-start">
-					<input type="checkbox" checked={isAllowDeleteConsent} class="checkbox" />
+					<input type="checkbox" bind:checked={isAllowDeleteConsent} class="checkbox" />
 					<span class="label-text ml-4 text-left">
 						I understand that my account can be deleted if I was never an active member of webdev
 					</span>
