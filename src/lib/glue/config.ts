@@ -1,4 +1,5 @@
 import IconAdd from '$lib/icons/glue/IconAdd.svelte';
+import IconPerson from '$lib/icons/glue/IconPerson.svelte';
 import type { IPrivateNav, IPublicNav } from '$lib/types/glue/nav.type';
 
 export const APP_NAME = 'webdev';
@@ -17,6 +18,11 @@ export const PUBLIC_NAVS: IPublicNav[] = [
 	}
 ];
 export const PRIVATE_NAVS: IPrivateNav[] = [
+	{
+		path: '/profile',
+		label: 'My profile',
+		icon: IconPerson
+	},
 	{
 		path: '/project/create',
 		label: 'Register project',
